@@ -3,9 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="RAM Sentinel explains Mac memory pressure, finds the processes behind it, and gives you a clear next action from the menu bar.">
+    <meta name="description" content="RAM Sentinel warns Mac AI-agent workflows before swap fills, names the process behind the pressure, and helps you recover before a freeze.">
     <meta name="theme-color" content="#eeefe9">
-    <title>RAM Sentinel for Mac | Find what is filling memory</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RAM Sentinel | Close the right thing before your Mac freezes">
+    <meta property="og:description" content="A private Mac memory autopilot for developers running AI agents and browser automation.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="RAM Sentinel | Close the right thing before your Mac freezes">
+    <meta name="twitter:description" content="A private Mac memory autopilot for developers running AI agents and browser automation.">
+    <title>RAM Sentinel | Close the right thing before your Mac freezes</title>
     <link rel="icon" type="image/svg+xml" href="./ram-sentinel-mark.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,59 +25,145 @@
         <span>RAM Sentinel</span>
       </a>
       <nav aria-label="Main navigation">
-        <a class="nav-download" href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download for Mac</a>
+        <a class="source-link" href="https://github.com/kamalbuilds/ram-sentinel">Source</a>
+        <a class="button button-small" href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download</a>
       </nav>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">A menu bar memory watchdog for macOS</p>
-          <h1 id="hero-title">Find the source of memory pressure.</h1>
-          <p class="lede">RAM Sentinel watches swap and memory pressure, then points to the apps, browser profiles, and leftover automation behind the load.</p>
+          <h1 id="hero-title">Stop the next freeze.</h1>
+          <p class="lede">RAM Sentinel watches swap while Claude Code, Codex, Cursor, and browser automation work. It names what is crowding memory and helps clear the leftovers before your Mac freezes.</p>
           <div class="actions">
-            <a class="download-button" href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download for Mac <span aria-hidden="true">↗</span></a>
-            <span class="requirements">macOS 13 or later · Apple silicon</span>
+            <a class="button" href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download for Mac <span aria-hidden="true">↗</span></a>
+            <span class="requirements">macOS 13+ · Apple silicon · Notarized by Apple</span>
           </div>
+          <p class="license-line">Free and open source under MIT. Runs on your Mac, with no account, network calls, or telemetry.</p>
         </div>
 
-        <figure class="pressure-report panel" aria-labelledby="report-caption">
-          <figcaption id="report-caption">Example reading · 16 GB Mac under pressure</figcaption>
-          <div class="swap-reading">
-            <div class="reading-label-row"><span class="reading-label">Swap used</span><span class="status-chip">Critical</span></div>
-            <strong>91<span>%</span></strong>
+        <figure class="memory-reading panel" data-ui="memory reading" aria-labelledby="memory-caption">
+          <figcaption id="memory-caption">Recorded on a 16 GB MacBook, 15 Nov 2026</figcaption>
+          <div class="reading-alert">
+            <span class="state-mark" aria-hidden="true"></span>
+            <div><span class="status-chip">Critical</span><strong>Swap 97% full</strong><span>System will freeze soon</span></div>
+            <strong class="reading-number">15.6 <small>of 16.0 GB</small></strong>
           </div>
-          <div class="meter" role="img" aria-label="Swap usage is at 91 percent">
-            <span></span>
+          <div class="memory-map" data-ui="memory map" role="img" aria-label="Sixteen gigabytes of RAM split across listed apps, memory compressor, and available memory. Swap extends almost the same distance beyond the RAM boundary.">
+            <div class="memory-scale"><span>RAM · 16 GB</span><span>Swap · 16 GB scale</span></div>
+            <div class="map-track">
+              <div class="ram-segments">
+                <i class="segment brave" title="Brave Browser, 5.0 GB"></i>
+                <i class="segment kept" title="Kept Brave agent profile, 878 MB"></i>
+                <i class="segment claude" title="claude, 845 MB"></i>
+                <i class="segment wispr" title="Wispr Flow, 341 MB"></i>
+                <i class="segment whatsapp" title="WhatsApp, 215 MB"></i>
+                <i class="segment python" title="python workers, 202 MB"></i>
+                <i class="segment node" title="node workers, 109 MB"></i>
+                <i class="segment compressor" title="Memory compressor, 5.9 GB"></i>
+                <i class="segment available" title="Everything else, 2.51 GB"></i>
+              </div>
+              <div class="swap-overflow" aria-hidden="true"></div>
+              <span class="ram-edge" aria-hidden="true"></span>
+            </div>
+            <div class="map-boundaries"><span>0</span><span>16 GB RAM edge</span><span>32 GB</span></div>
+            <ul class="memory-legend">
+              <li><span class="legend-swatch brave"></span><span>Brave Browser<small>84 processes · 7 tabs · 78 renderers</small></span><strong>5.0 GB</strong></li>
+              <li><span class="legend-swatch kept"></span><span>Brave, kept agent profile</span><strong>878 MB</strong></li>
+              <li><span class="legend-swatch claude"></span><span>claude · 10 processes</span><strong>845 MB</strong></li>
+              <li><span class="legend-swatch wispr"></span><span>Wispr Flow</span><strong>341 MB</strong></li>
+              <li><span class="legend-swatch whatsapp"></span><span>WhatsApp</span><strong>215 MB</strong></li>
+              <li><span class="legend-swatch python"></span><span>python workers · MCP and dev servers</span><strong>202 MB</strong></li>
+              <li><span class="legend-swatch node"></span><span>node workers · 6 groups</span><strong>109 MB</strong></li>
+              <li><span class="legend-swatch compressor"></span><span>Memory compressor</span><strong>5.9 GB</strong></li>
+              <li><span class="legend-swatch available"></span><span>Everything else</span><strong>2.51 GB</strong></li>
+            </ul>
+            <div class="pressure-stats"><span>Memory pressure <strong>33% free</strong></span><span>Swap <strong>15.6 / 16.0 GB</strong></span></div>
           </div>
-          <div class="process-reading">
-            <span>Brave Browser</span>
-            <strong>9.1 GB</strong>
-          </div>
-          <p class="report-note">90 tabs across browser profiles. See which process is responsible and choose what to close.</p>
         </figure>
       </section>
 
-      <section class="signal-list" aria-labelledby="signal-title">
-        <h2 id="signal-title">One clear route from warning to recovery</h2>
-        <ol>
-          <li><strong>Read the warning</strong><span>See memory pressure, swap, and load in the menu bar.</span></li>
-          <li><strong>Find the source</strong><span>Separate browser profiles and leftover headless automation.</span></li>
-          <li><strong>Choose a recovery</strong><span>Review suggested actions and the processes they affect.</span></li>
-        </ol>
+      <section class="diagnosis" aria-labelledby="diagnosis-title">
+        <div class="section-intro">
+          <h2 id="diagnosis-title">From process names to next move.</h2>
+          <p>RAM Sentinel combines swap, memory compression, pressure, and load per core into a plain-English diagnosis and recovery plan. Both columns below come from the same 16 GB MacBook on 15 Nov 2026.</p>
+        </div>
+        <div class="comparison">
+          <div class="raw-list">
+            <h3>Activity Monitor says</h3>
+            <ul aria-label="Process list from Activity Monitor">
+              <li><span>Brave Browser Helper (Renderer)</span><strong>202 MB</strong></li>
+              <li><span>Brave Browser Helper (Renderer)</span><strong>171 MB</strong></li>
+              <li><span>Brave Browser Helper (Renderer)</span><strong>169 MB</strong></li>
+              <li><span>Brave Browser Helper (Renderer)</span><strong>128 MB</strong></li>
+              <li><span>80 more Brave helpers, then six rows of node</span></li>
+            </ul>
+          </div>
+          <div class="recovery-plan panel">
+            <h3>RAM Sentinel says</h3>
+            <ul>
+              <li><span><b>Close heavy Brave tabs first</b><small>7 tabs hold about 5.0 GB, before you quit the browser</small></span><span class="plan-arrow" aria-hidden="true">↗</span></li>
+              <li><span><b>Stop mcp-server-mobile and vite preview</b><small>Named workers, not six rows of “node”</small></span><span class="plan-arrow" aria-hidden="true">↗</span></li>
+              <li><span><b>Close the automation browser a run left behind</b><small>A one-off profile, 410 MB, outside your kept profiles</small></span><span class="plan-arrow" aria-hidden="true">↗</span></li>
+            </ul>
+            <p class="kept-note"><span aria-hidden="true">Kept</span> Your agent profile stays open.</p>
+          </div>
+        </div>
       </section>
 
-      <section class="install-strip" aria-labelledby="install-title">
-        <div>
-          <p class="eyebrow">Start on your Mac</p>
-          <h2 id="install-title">See the pressure. Find the process.</h2>
+      <section class="agent-workflow" aria-labelledby="workflow-title">
+        <div class="workflow-copy">
+          <h2 id="workflow-title">Clean up after agent runs.</h2>
+          <p>Color-coded swap readings in the menu bar tell you when pressure is rising. Headless browsers and orphaned worker trees can stay alive after a run ends. RAM Sentinel finds them and closes them in one click. Profiles you keep are never closed.</p>
+          <p class="autopilot-note"><span class="toggle-state" aria-hidden="true"><i></i></span><span><strong>Optional autopilot</strong><small>Off until you turn it on. Closes leftover headless browsers on its own. Everything else waits for your click.</small></span></p>
         </div>
-        <a class="download-button" href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download RAM Sentinel <span aria-hidden="true">↗</span></a>
+        <div class="gate-example panel">
+          <h3>Pause new work while memory is critical</h3>
+          <p>Use the gate in an agent loop or CI job. It exits 0 when memory is okay, 1 for a warning, and 2 when critical.</p>
+          <pre><code>until ram-sentinel --gate; do&#10;  sleep 30&#10;done &amp;&amp; claude -p &quot;...&quot;</code></pre>
+        </div>
+      </section>
+
+      <section class="recovery" aria-labelledby="recovery-title">
+        <div class="recovery-heading">
+          <h2 id="recovery-title">A warning you can act on. A record of what worked.</h2>
+          <p>See the culprit before the freeze. Afterward, check what was closed, how much memory it freed, and how long recovery took.</p>
+        </div>
+        <div class="recovery-ui">
+          <article class="alert-example panel" data-ui="alert example" aria-label="Example app alert UI">
+            <div class="ui-caption"><span>ALERT · APP UI</span><span class="alert-dot" aria-hidden="true"></span></div>
+            <p class="alert-title">Swap 91% full.</p>
+            <p class="alert-copy">Close the leftover headless browser. Frees about 1.4 GB.</p>
+            <button type="button" class="button free-button">Free about 1.4 GB</button>
+          </article>
+          <article class="weekly-example panel" data-ui="weekly summary" aria-label="Example weekly summary app UI">
+            <div class="weekly-top"><div><span class="ui-caption">STALL LOG · APP UI</span><h3>This week</h3></div><span class="summary-icon" aria-hidden="true">↗</span></div>
+            <div class="log-table" role="table" aria-label="Stall recovery summary">
+              <div class="log-row log-header" role="row"><span role="columnheader">Stall</span><span role="columnheader">Closed</span><span role="columnheader">Freed</span><span role="columnheader">Recovery</span></div>
+              <div class="log-row" role="row"><span role="cell">Each event</span><span role="cell">Named process</span><span role="cell">Measured</span><span role="cell">Recorded</span></div>
+              <div class="log-row" role="row"><span role="cell">Week view</span><span role="cell">By culprit</span><span role="cell">Totaled</span><span role="cell">Summarized</span></div>
+            </div>
+            <p class="summary-foot">Each stall and recovery stays in your local log.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="privacy" aria-label="Privacy and open source">
+        <p>Your memory data stays on your Mac. RAM Sentinel makes no network calls and collects no telemetry.</p>
+        <p>Free and open source under the MIT license. Read the code on <a href="https://github.com/kamalbuilds/ram-sentinel">GitHub</a>.</p>
+      </section>
+
+      <section class="download-rail" aria-labelledby="download-title">
+        <div><h2 id="download-title">Give the next run room to finish.</h2><p>macOS 13 or later · Apple silicon · Signed and notarized by Apple</p></div>
+        <a class="button" href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download for Mac <span aria-hidden="true">↗</span></a>
       </section>
     </main>
 
-    <footer>
-      <span>RAM Sentinel · macOS 13 or later</span>
+    <footer class="site-footer">
+      <a class="footer-brand" href="./">RAM Sentinel</a>
+      <span>Free and open source · MIT</span>
+      <a href="https://github.com/kamalbuilds/ram-sentinel">Source on GitHub</a>
+      <a href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download for Mac</a>
     </footer>
   </body>
 </html>
