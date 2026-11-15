@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="RAM Sentinel explains Mac memory pressure, finds the processes behind it, and gives you a clear next action from the menu bar.">
+    <meta name="theme-color" content="#eeefe9">
+    <title>RAM Sentinel for Mac | Find what is filling memory</title>
+    <link rel="icon" type="image/svg+xml" href="./ram-sentinel-mark.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="brand" href="./" aria-label="RAM Sentinel home">
+        <img src="./ram-sentinel-mark.svg" width="36" height="36" alt="">
+        <span>RAM Sentinel</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a class="nav-download" href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download for Mac</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">A menu bar memory watchdog for macOS</p>
+          <h1 id="hero-title">Find the source of memory pressure.</h1>
+          <p class="lede">RAM Sentinel watches swap and memory pressure, then points to the apps, browser profiles, and leftover automation behind the load.</p>
+          <div class="actions">
+            <a class="download-button" href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download for Mac <span aria-hidden="true">↗</span></a>
+            <span class="requirements">macOS 13 or later · Apple silicon</span>
+          </div>
+        </div>
+
+        <figure class="pressure-report panel" aria-labelledby="report-caption">
+          <figcaption id="report-caption">Example reading · 16 GB Mac under pressure</figcaption>
+          <div class="swap-reading">
+            <div class="reading-label-row"><span class="reading-label">Swap used</span><span class="status-chip">Critical</span></div>
+            <strong>91<span>%</span></strong>
+          </div>
+          <div class="meter" role="img" aria-label="Swap usage is at 91 percent">
+            <span></span>
+          </div>
+          <div class="process-reading">
+            <span>Brave Browser</span>
+            <strong>9.1 GB</strong>
+          </div>
+          <p class="report-note">90 tabs across browser profiles. See which process is responsible and choose what to close.</p>
+        </figure>
+      </section>
+
+      <section class="signal-list" aria-labelledby="signal-title">
+        <h2 id="signal-title">One clear route from warning to recovery</h2>
+        <ol>
+          <li><strong>Read the warning</strong><span>See memory pressure, swap, and load in the menu bar.</span></li>
+          <li><strong>Find the source</strong><span>Separate browser profiles and leftover headless automation.</span></li>
+          <li><strong>Choose a recovery</strong><span>Review suggested actions and the processes they affect.</span></li>
+        </ol>
+      </section>
+
+      <section class="install-strip" aria-labelledby="install-title">
+        <div>
+          <p class="eyebrow">Start on your Mac</p>
+          <h2 id="install-title">See the pressure. Find the process.</h2>
+        </div>
+        <a class="download-button" href="https://github.com/kamalbuilds/ram-sentinel-releases/releases/latest/download/RamSentinel-macos.dmg">Download RAM Sentinel <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer>
+      <span>RAM Sentinel · macOS 13 or later</span>
+    </footer>
+  </body>
+</html>

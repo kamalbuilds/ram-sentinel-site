@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="RAM Sentinel memory bars">
+  <rect width="1024" height="1024" fill="#23251d"/>
+  <path d="M188 270h648v470H188z" fill="#33342d" stroke="#4d4f46" stroke-width="26"/>
+  <path d="M271 366h90v274h-90zM410 366h90v274h-90zM549 366h90v274h-90zM688 366h65v274h-65z" fill="#eeefe9"/>
+  <path d="M271 578h90v62h-90zM410 482h90v158h-90zM549 398h90v242h-90zM688 540h65v100h-65z" fill="#f7a501"/>
+  <circle cx="780" cy="294" r="40" fill="#f7a501" stroke="#23251d" stroke-width="18"/>
+</svg>
